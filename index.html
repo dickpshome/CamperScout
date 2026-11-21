@@ -1,6 +1,6 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#153f36"><title>CamperScout 4.1 — kaartgestuurd</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><style>
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#153f36"><title>CamperScout 4.2 — lokale dataset</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><style>
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#173b34;background:#f5f6f2}*{box-sizing:border-box}body{margin:0}header{background:#173f36;color:#fff;padding:17px 22px;display:flex;justify-content:space-between;align-items:center;gap:10px}header b{font-size:24px;letter-spacing:-.7px}header small{display:block;color:#c6dfd3;font-size:12px}header .pill{background:#315b50;padding:8px 12px;border-radius:30px;font-size:12px}.layout{display:grid;grid-template-columns:minmax(310px,410px) 1fr;height:calc(100dvh - 78px)}aside{overflow:auto;padding:18px;background:#fbfcf9;border-right:1px solid #dce5dd}h2{font-size:18px;margin:0 0 10px}.muted{color:#60776d;font-size:13px;line-height:1.5}.search{display:flex;gap:8px;margin:13px 0}.search input{flex:1;min-width:0;border:1px solid #c7d6ce;border-radius:10px;padding:12px;font-size:16px}button,.button{border:0;border-radius:9px;padding:11px 13px;font-size:14px;font-weight:650;cursor:pointer;text-decoration:none;display:inline-flex;justify-content:center;align-items:center;gap:6px}.primary{background:#e5ae59;color:#233e32}.light{background:#e7efe9;color:#204b3b}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.filters label{border:1px solid #d6e2da;border-radius:30px;padding:8px 10px;font-size:12px;cursor:pointer}.filters input{accent-color:#245c48}.status{background:#edf3ee;padding:12px;border-radius:10px;font-size:13px;line-height:1.5;margin:12px 0}.card{background:#fff;border:1px solid #e0e7e0;border-radius:13px;padding:14px;margin:11px 0;box-shadow:0 2px 8px #193b2b0b}.card h3{font-size:16px;margin:0 0 5px}.tag{font-size:11px;background:#eaf2ec;color:#23523d;padding:4px 8px;border-radius:20px;display:inline-block;margin:4px 4px 7px 0}.card p{font-size:13px;line-height:1.5;color:#4b6257;margin:6px 0 11px}.actions{display:flex;flex-wrap:wrap;gap:7px}.actions .button{font-size:12px;padding:9px 10px}.meta{font-size:12px;color:#63786d}#map{height:100%;min-height:350px}.mapwrap{position:relative;min-height:350px}.mapfallback{display:none;position:absolute;inset:0;background:#e9f0e9;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:24px;text-align:center}.mapfallback a{color:#1b5b43}.empty{padding:18px;background:#fff6e6;border-radius:12px;font-size:13px;line-height:1.6}footer{font-size:11px;color:#708277;margin:18px 0}@media(max-width:760px){header{padding:13px 16px}.layout{display:flex;flex-direction:column;height:auto}aside{order:2;overflow:visible}.mapwrap{order:1;height:40vh;min-height:260px}#map{min-height:260px}header b{font-size:20px}}
-</style></head><body><header><div><b>🚐 CamperScout</b><small>Vind de plek die bij je past</small></div><span class="pill">4.1 · kaartgestuurd</span></header><div class="layout"><aside><h2>Zoek camperplaatsen</h2><div class="muted">Verplaats of zoom de kaart: de lijst volgt het zichtbare gebied. OpenStreetMap is de onafhankelijke bron; bij een storing blijven de proeflocaties rond Ronda beschikbaar.</div><form id="searchForm" class="search"><input id="location" value="Ronda, Spanje" aria-label="Plaats of regio" placeholder="Plaats of regio"><button class="primary" type="submit">Zoeken</button></form><div class="filters"><label><input type="checkbox" id="camping"> Alleen campings</label><label><input type="checkbox" id="facilities"> Met voorzieningen</label><label><input type="checkbox" id="favorites"> Alleen favorieten</label></div><div id="status" class="status" role="status"></div><button class="light" id="refresh" type="button">↻ Zoek in dit kaartgebied</button><div id="results"></div><footer>Gegevens: OpenStreetMap (© bijdragers, ODbL). Campercontact-links alleen bij de vier proeflocaties. Controleer altijd de actuele overnachtingsregels. Geen koppeling met Campercontact.</footer></aside><main class="mapwrap"><div id="map"></div><div id="fallback" class="mapfallback"><strong>Kaart kon niet worden geladen</strong><span>De locaties en Campercontact-links blijven links beschikbaar.</span><a href="https://www.openstreetmap.org/#map=12/36.746/-5.164" target="_blank" rel="noopener">Bekijk Ronda op OpenStreetMap ↗</a></div></main></div><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script>
+</style></head><body><header><div><b>🚐 CamperScout</b><small>Vind de plek die bij je past</small></div><span class="pill">4.2 · Andalusië</span></header><div class="layout"><aside><h2>Zoek camperplaatsen</h2><div class="muted">Verplaats of zoom de kaart: resultaten komen uit een lokaal gegevensbestand. Geen live Overpass-aanvragen. De lokale dataset bevat 490 OSM-locaties in Andalusië, inclusief 290 als terrein ingetekende locaties.</div><form id="searchForm" class="search"><input id="location" value="Ronda, Spanje" aria-label="Plaats of regio" placeholder="Plaats of regio"><button class="primary" type="submit">Zoeken</button></form><div class="filters"><label><input type="checkbox" id="camping"> Alleen campings</label><label><input type="checkbox" id="facilities"> Met voorzieningen</label><label><input type="checkbox" id="favorites"> Alleen favorieten</label></div><div id="status" class="status" role="status"></div><div class="muted">Eigen dataset laden (GeoJSON of CamperScout JSON): <input id="importFile" type="file" accept=".geojson,.json,application/json" style="width:100%;margin:8px 0 12px"></div><div id="results"></div><footer>Dataset: 490 OSM-objecten in Andalusië (200 punten en 290 terreinen). OpenStreetMap kan onvolledig of verouderd zijn. Bij import: © OpenStreetMap-bijdragers (ODbL). Geen live koppeling met Campercontact of Overpass. Controleer lokale regels en openingstijden.</footer></aside><main class="mapwrap"><div id="map"></div><div id="fallback" class="mapfallback"><strong>Kaart kon niet worden geladen</strong><span>De locaties en Campercontact-links blijven links beschikbaar.</span><a href="https://www.openstreetmap.org/#map=12/36.746/-5.164" target="_blank" rel="noopener">Bekijk Ronda op OpenStreetMap ↗</a></div></main></div><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script>
 'use strict';
 const places=[
 {id:'62980',name:'Área Autocaravanas Ciudad de Ronda',type:'Camperplaats',lat:36.75188,lon:-5.14798,facilities:true,desc:'Camperplaats met stroom, water, lozen en sanitair. Praktisch voor een bezoek aan Ronda.',link:'https://www.campercontact.com/en/spain/andalusia/ronda/62980/area-autocaravanas-ciudad-de-ronda'},
@@ -12,40 +12,35 @@ const seed=places.slice();let dataMode='proef';const $=id=>document.getElementBy
 function save(){try{localStorage.setItem('cs-favs',JSON.stringify([...fav]))}catch{}}
 function selected(){const b=map?.getBounds();return places.filter(p=>(!b||b.contains([p.lat,p.lon]))&&(!$('camping').checked||p.type==='Camping')&&(!$('facilities').checked||p.facilities)&&(!$('favorites').checked||fav.has(p.id)))}
 function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function render(){const list=selected();$('status').textContent=`${list.length} locaties in kaartbeeld · bron: ${dataMode}. ${dataMode==='proef'?'Alleen de vier Ronda-proeflocaties zijn beschikbaar.':'Controleer kenmerken en beschikbaarheid bij de aanbieder.'}`;$('results').innerHTML=list.length?list.map(p=>`<article class="card"><h3>${escapeHTML(p.name)}</h3><span class="tag">${p.type}</span>${p.closed?'<span class="tag" style="background:#fff0db;color:#8b5100">Mogelijk gesloten</span>':''}<p>${escapeHTML(p.desc)}</p><div class="actions">${p.link?`<a class="button primary" target="_blank" rel="noopener noreferrer" href="${p.link}">Campercontact ↗</a>`:""}<button class="light" data-locate="${p.id}">📍 Kaart</button><button class="light" data-fav="${p.id}">${fav.has(p.id)?'★ Bewaard':'☆ Bewaar'}</button><a class="button light" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lon}">Route ↗</a></div></article>`).join(''):'<div class="empty">Geen locaties met deze filters. Pas de filters aan.</div>';document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const id=b.dataset.fav;fav.has(id)?fav.delete(id):fav.add(id);save();render()});document.querySelectorAll('[data-locate]').forEach(b=>b.onclick=()=>{const p=places.find(x=>x.id===b.dataset.locate);if(map){map.setView([p.lat,p.lon],15);const marker=markers.find(m=>m.id===p.id);marker?.marker.openPopup()}else window.open(`https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}`,'_blank')});if(map){markers.forEach(x=>map.removeLayer(x.marker));markers=list.map(p=>({id:p.id,marker:L.marker([p.lat,p.lon]).addTo(map).bindPopup(`<strong>${escapeHTML(p.name)}</strong><br>${p.link?`<a href="${p.link}" target="_blank" rel="noopener">Bekijk op Campercontact ↗</a>`:"OpenStreetMap-locatie"}`)}));}}
-let timer=null,seq=0;
-function queueLoad(){render();clearTimeout(timer);timer=setTimeout(loadArea,800)}
-async function loadArea(){
- if(!map)return;
- const b=map.getBounds(),center=map.getCenter(),bounds=[b.getSouth(),b.getWest(),b.getNorth(),b.getEast()];
- const radius=Math.min(75000,Math.max(1000,Math.round(map.distance(center,b.getNorthEast()))));
- const ticket=++seq;
- $('status').textContent='OpenStreetMap-locaties voor dit kaartgebied ophalen…';
- try{
-  const resp=await fetch('/api/places',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lat:center.lat,lon:center.lng,radius})});
-  if(!resp.ok)throw Error('Gegevensserver niet bereikbaar ('+resp.status+')');
-  const payload=await resp.json();
-  if(ticket!==seq)return;
-  if(!Array.isArray(payload.elements))throw Error('Ongeldig gegevensformaat');
-  const seen=new Set();
-  const live=payload.elements.map(el=>{
-    const lat=el.lat??el.center?.lat,lon=el.lon??el.center?.lon,t=el.tags||{};
-    if(!Number.isFinite(lat)||!Number.isFinite(lon))return null;
-    const id=el.type+'-'+el.id;
-    if(seen.has(id))return null;seen.add(id);
-    return {id,name:t.name||('Camperplaats ('+el.id+')'),type:t.tourism==='camp_site'?'Camping':'Camperplaats',lat,lon,facilities:!!(t.power_supply||t.drinking_water||t.sanitary_dump_station||t.toilets),desc:[t.description,t.addr_city,t.website].filter(Boolean).join(' · ')||'Locatie uit OpenStreetMap; voorzieningen niet bevestigd.',link:null};
-  }).filter(Boolean);
-  places.splice(0,places.length,...live);
-  dataMode='OpenStreetMap'+(payload.warning?' (cache)':'');
-  render();
- }catch(err){
-  if(ticket!==seq)return;
-  places.splice(0,places.length,...seed);
-  dataMode='proef';
-  render();
-  $('status').textContent='Live gegevens tijdelijk niet bereikbaar. Alleen de Ronda-proeflocaties zijn zichtbaar. '+err.message;
- }
+function render(){const list=selected();$('status').textContent=`${list.length} locaties in kaartbeeld · bron: ${dataMode}. ${dataMode.startsWith('proef')?'Dit zijn alleen de vier Ronda-proeflocaties, geen volledige dekking.':'Controleer kenmerken en beschikbaarheid bij de aanbieder.'}`;$('results').innerHTML=list.length?list.map(p=>`<article class="card"><h3>${escapeHTML(p.name)}</h3><span class="tag">${p.type}</span>${p.closed?'<span class="tag" style="background:#fff0db;color:#8b5100">Mogelijk gesloten</span>':''}<p>${escapeHTML(p.desc)}</p><div class="actions">${p.link?`<a class="button primary" target="_blank" rel="noopener noreferrer" href="${p.link}">Campercontact ↗</a>`:""}${p.osm?`<a class="button light" target="_blank" rel="noopener noreferrer" href="${p.osm}">OpenStreetMap ↗</a>`:""}<button class="light" data-locate="${p.id}">📍 Kaart</button><button class="light" data-fav="${p.id}">${fav.has(p.id)?'★ Bewaard':'☆ Bewaar'}</button><a class="button light" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lon}">Route ↗</a></div></article>`).join(''):'<div class="empty">Geen locaties in dit kaartgebied met deze filters. Zoom uit of pas de filters aan.</div>';document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const id=b.dataset.fav;fav.has(id)?fav.delete(id):fav.add(id);save();render()});document.querySelectorAll('[data-locate]').forEach(b=>b.onclick=()=>{const p=places.find(x=>x.id===b.dataset.locate);if(map){map.setView([p.lat,p.lon],15);const marker=markers.find(m=>m.id===p.id);marker?.marker.openPopup()}else window.open(`https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}`,'_blank')});if(map){markers.forEach(x=>map.removeLayer(x.marker));markers=list.map(p=>({id:p.id,marker:L.marker([p.lat,p.lon]).addTo(map).bindPopup(`<strong>${escapeHTML(p.name)}</strong><br>${p.link?`<a href="${p.link}" target="_blank" rel="noopener">Bekijk op Campercontact ↗</a>`:"OpenStreetMap-locatie"}`)}));}}
+let dataCount=places.length;
+function fromFeature(f,i){
+ const t=f.properties||f.tags||{},g=f.geometry||{},c=g.coordinates||[];
+ const lat=Number(f.lat??(g.type==='Point'?c[1]:NaN)),lon=Number(f.lon??(g.type==='Point'?c[0]:NaN));
+ if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)return null;
+ const kind=t.tourism==='camp_site'?'Camping':(t.tourism==='caravan_site'?'Camperplaats':(t.type||'Camperplaats'));
+ const facilities=['power_supply','drinking_water','sanitary_dump_station','toilets'].some(k=>['yes','true','1'].includes(String(t[k]).toLowerCase()));
+ return {id:String(f.id||t['@id']||'osm-'+i),name:String(t.name||'Naamloze '+kind),type:kind,lat,lon,facilities,desc:String(t.description||t['addr:city']||'OpenStreetMap-locatie; controleer voorzieningen'),link:null};
 }
+function setDataset(items,label){
+ places.splice(0,places.length,...items);dataMode=label;dataCount=items.length;render();
+}
+async function loadBundled(){
+ try{const r=await fetch('./data/andalusie.json',{cache:'no-store'});if(!r.ok)throw Error('geen gegevensbestand');
+ const d=await r.json();if(!Array.isArray(d)||!d.length)throw Error('geen locaties in bestand');
+ setDataset(d,'lokale dataset ('+d.length+')');
+ }catch(e){dataMode='proef (4 locaties rond Ronda)';render()}
+}
+$('importFile').onchange=async e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ try{
+  const raw=JSON.parse(await file.text());let arr=Array.isArray(raw)?raw:(raw.type==='FeatureCollection'?raw.features:raw.elements);
+  if(!Array.isArray(arr))throw Error('Geen geldige lijst of GeoJSON FeatureCollection');
+  const converted=arr.map((p,i)=>p.geometry||p.tags?fromFeature(p,i):p).filter(p=>p&&Number.isFinite(Number(p.lat))&&Number.isFinite(Number(p.lon)));
+  if(!converted.length)throw Error('Geen locaties met coördinaten gevonden');
+  setDataset(converted,'geïmporteerd bestand ('+converted.length+')');
+ }catch(err){$('status').textContent='Import mislukt: '+err.message}
+};
 $('searchForm').onsubmit=async e=>{
  e.preventDefault();const q=$('location').value.trim();if(!q)return;
  $('status').textContent='Plaats zoeken…';
@@ -54,10 +49,10 @@ $('searchForm').onsubmit=async e=>{
   if(!r.ok)throw Error('Zoeken niet beschikbaar');
   const a=await r.json();if(!a.length)throw Error('Plaats niet gevonden');
   map.setView([+a[0].lat,+a[0].lon],12);
-  queueLoad();
+  render();
  }catch(err){$('status').textContent=err.message}
 };
-$('refresh').onclick=loadArea;
+
 ['camping','facilities','favorites'].forEach(id=>$(id).onchange=render);
-try{if(!window.L)throw Error('Leaflet niet geladen');map=L.map('map').setView([36.746,-5.164],12);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap-bijdragers',maxZoom:18}).addTo(map);map.on('moveend',queueLoad);map.on('tileerror',()=>{ /* results remain available */ });}catch(e){$('fallback').style.display='flex';$('map').style.display='none'}render();if(map)queueLoad();
+try{if(!window.L)throw Error('Leaflet niet geladen');map=L.map('map').setView([36.746,-5.164],12);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap-bijdragers',maxZoom:18}).addTo(map);map.on('moveend',render);map.on('tileerror',()=>{ /* results remain available */ });}catch(e){$('fallback').style.display='flex';$('map').style.display='none'}render();loadBundled();
 </script></body></html>
